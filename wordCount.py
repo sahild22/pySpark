@@ -1,0 +1,5 @@
+orderItems = sc.textFile("/Users/sahildiwan/CCA-175/data/myData.txt")
+orderItemsFlatMap = orderItems.flatMap(lambda line: (oi.split(" ")))
+orderItemsMap = orderItemsFlatMap.map(lambda word: (word, 1))
+revenuePerId = orderItemsMap.reduceByKey(lambda t, v: t + v)
+for i in revenuePerId.collect(): print(i)
